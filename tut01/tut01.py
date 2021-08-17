@@ -14,15 +14,14 @@ def meraki_helper(n):
 
 
 count = 0
-n = int(input("Enter number of elements : "))
-
-for i in range(0, n):
-    ele = int(input())
+input = [12, 14, 56, 1]
+for i in range(0, len(input)):
+    ele = input[i]
     if (meraki_helper(ele) == 1):
         count = count + 1
-        print("Yes,", ele, "is a Meraki number")
+        print("Yes -", ele, "is a Meraki number")
     else:
-        print("No,", ele, "is not a Meraki number")
+        print("No -", ele, "is not a Meraki number")
 
-print("The input list contains", count,
-      "Meraki and", n-count, "Non Meraki numbers.")
+print("the input list contains", count,
+      "meraki and", len(input)-count, "non meraki numbers.")
