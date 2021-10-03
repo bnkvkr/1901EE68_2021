@@ -101,39 +101,3 @@ def overall():
 
 generate_marksheet()
 overall()
-
-# book = load_workbook("./1901EE68.xlsx")
-# #    if "Sheet" in book.sheetnames:
-# #         ss = book['Sheet']
-# #         ss.title = 'Overall'
-# ss = book['Overall']
-# ss.append(["Roll No.", "1901EE68"])
-# ss.append(["Name of Student", "Vishal"])
-# ss.append(["Discipline", "EE"])
-# ss["A4"] = "Semester No."
-# ss["A5"] = "Semester wise Credit Taken"
-# ss["A6"] = "SPI"
-# ss["A7"] = "Total Credits Taken"
-# ss["A8"] = "CPI"
-# t = 0
-# tt = 0
-# for x in range(1, len(book.sheetnames)):
-#     if "Sem"+str(x) not in book.sheetnames:
-#         break
-#     s = book["Sem"+str(x)]
-#     ss.cell(row=4, column=x+1).value = x
-#     sm = 0
-#     spi = 0
-#     for a in range(2, s.max_row + 1):
-#         sm += int(s.cell(row=a, column=5).value)
-#         g = st[s.cell(row=a, column=7).value.strip()]
-#         spi += (int(s.cell(row=a, column=5).value))*grade[g]
-#     ss.cell(row=5, column=x+1).value = sm
-#     spi = spi/sm
-#     ss.cell(row=6, column=x+1).value = round(spi, 2)
-#     t += sm
-#     tt += spi*sm
-#     ss.cell(row=7, column=x+1).value = t
-#     ss.cell(row=8, column=x+1).value = round(tt/t, 2)
-
-# book.save("./1901EE68.xlsx")
