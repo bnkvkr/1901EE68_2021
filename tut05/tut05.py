@@ -77,11 +77,12 @@ def overall():
         ss["A8"] = "CPI"
         t = 0
         tt = 0
-        for x in range(1, len(book.sheetnames)):
-            if "Sem"+str(x) not in book.sheetnames:
-                break
-            s = book["Sem"+str(x)]
-            ss.cell(row=4, column=x+1).value = x
+        x = 1
+        for nn in book.sheetnames:
+            if nn == 'Overall':
+                continue
+            s = book[nn]
+            ss.cell(row=4, column=x+1).value = nn[3:]
             sm = 0
             spi = 0
             for a in range(2, s.max_row + 1):
@@ -95,6 +96,7 @@ def overall():
             tt += spi*sm
             ss.cell(row=7, column=x+1).value = t
             ss.cell(row=8, column=x+1).value = round(tt/t, 2)
+            x += 1
 
         book.save("./output/"+f)
 
