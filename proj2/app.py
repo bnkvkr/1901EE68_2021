@@ -62,10 +62,12 @@ def upload1():
 
 @app.route("/upload2", methods=['GET', 'POST'])
 def uploadsign():
-    path1 = './sign'
-
-    for f in os.listdir(path1):
-        os.remove(os.path.join(path1, f))
+    path2 = './sign'
+    isfile2 = os.path.isdir(path2)
+    if(isfile2 == False):
+        os.mkdir(path2)
+    for f in os.listdir(path2):
+        os.remove(os.path.join(path2, f))
 
     if request.method == 'POST':
 
@@ -86,7 +88,9 @@ def uploadsign():
 def uploadseal():
 
     path1 = './seal'
-
+    isfile2 = os.path.isdir(path1)
+    if(isfile2 == False):
+        os.mkdir(path1)
     for f in os.listdir(path1):
         os.remove(os.path.join(path1, f))
 
