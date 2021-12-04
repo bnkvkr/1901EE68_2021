@@ -24,6 +24,16 @@ seal = ''
 sign = ''
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+path2 = './sign'
+isfile2 = os.path.isdir(path2)
+if(isfile2 == False):
+    os.mkdir(path2)
+
+path1 = './seal'
+isfile2 = os.path.isdir(path1)
+if(isfile2 == False):
+    os.mkdir(path1)
+
 
 def pree():
     path2 = './transcriptsIITP'
