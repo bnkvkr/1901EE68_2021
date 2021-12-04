@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transcript-generator</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap');
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      outline: none !important;
+    }
+
+    .btn1 {
+      margin: 10px auto;
+      width: 60%;
+    }
+
+    .bt2 {
+      margin: 5px;
+      font-family: 'Roboto', sans-serif;
+      transition: all 0.3s ease 0s;
+    }
+
+    .bt2:hover {
+      box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .bg {
+      animation: slide 3s ease-in-out infinite alternate;
+      background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+      bottom: 0;
+      left: -50%;
+      opacity: 0.5;
+      position: fixed;
+      right: -50%;
+      top: 0;
+      z-index: -1;
+    }
+
+    .bg2 {
+      animation-direction: alternate-reverse;
+      animation-duration: 4s;
+    }
+
+    .bg3 {
+      animation-duration: 5s;
+    }
+
+    .content {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 0.25em;
+      box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+      box-sizing: border-box;
+      left: 50%;
+      padding: 10vmin;
+      position: fixed;
+      text-align: center;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    h1 {
+      font-family: monospace;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(-25%);
+      }
+
+      100% {
+        transform: translateX(25%);
+      }
+    }
+  </style>
+</head>
+
+<body style="text-align: center; display: flex; flex-direction: column; justify-content: center">
+  <div id="temp" style="display: flex"></div>
+
+  <div class="bg"></div>
+  <div class="bg bg2"></div>
+  <div class="bg bg3"></div>
+  <div class="content">
+    <div style="width: 75%; margin: 2% auto">
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+
+      <div class="al alert alert-danger" role="alert">{{message}}</div>
+
+      {% endfor %} {% endif %} {% endwith %}
+
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile02" name="file" />
+            <label class="custom-file-label" for="inputGroupFile02">Upload Grades.csv</label>
+          </div>
+          <div class="input-group-append">
+            <button class="input-group-text" id="" type="submit">Upload</button>
+          </div>
+        </div>
+      </form>
+
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile02" name="file" />
+            <label class="custom-file-label" for="inputGroupFile02">Upload name-roll.csv</label>
+          </div>
+          <div class="input-group-append">
+            <button class="input-group-text" id="" type="submit">Upload</button>
+          </div>
+        </div>
+      </form>
+
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile02" name="file" />
+            <label class="custom-file-label" for="inputGroupFile02">subject_master.csv</label>
+          </div>
+          <div class="input-group-append">
+            <button class="input-group-text" id="" type="submit">Upload</button>
+          </div>
+        </div>
+      </form>
+
+      <form action="/upload2" method="post" enctype="multipart/form-data">
+        <div class="input-group mb-3" style="margin-top: 2%">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile02" name="file" />
+            <label class="custom-file-label" for="inputGroupFile02">Upload Signature</label>
+          </div>
+          <div class="input-group-append">
+            <button class="input-group-text" id="" type="submit">Upload</button>
+          </div>
+        </div>
+      </form>
+      <form action="/upload3" method="post" enctype="multipart/form-data">
+        <div class="input-group mb-3" style="margin-top: 2%">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile02" name="file" />
+            <label class="custom-file-label" for="inputGroupFile02">Upload Seal</label>
+          </div>
+          <div class="input-group-append">
+            <button class="input-group-text" id="" type="submit">Upload</button>
+          </div>
+        </div>
+      </form>
+
+      <form action="/generate-range" method="post" id="loginform">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="">Enter Range of Roll Numbers</span>
+          </div>
+          <input id="password" type="text" class="form-control" name="First" placeholder="Starting Roll" required>
+          <input id="useremail" type="text" class="form-control" name="Second" placeholder="Ending Roll" required>
+        </div>
+        <div class="d-grid gap-2" style="margin-top: 2%">
+          <button disabled class="btn btn-primary" style="width: 100%" type="submit" id="ntn1">
+            Generate Range
+          </button>
+        </div>
+      </form>
+      <form action="/generate" method="post">
+        <div class="d-grid gap-2" style="margin-top: 2%">
+          <button id="gn" class="btn btn-primary" style="width: 100%" type="submit">
+            Generate All
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    $(document).ready(() => {
+      $('.al').delay(5000).fadeOut(300);
+      $('#gn').on('click', function (event) {
+        $('.bt3').css('visibility', 'hidden');
+      });
+
+      $('#ntn1').click(function (e) {
+        e.preventDefault();
+        var formData = new FormData(document.getElementById('loginform'));
+        var spin = `<div class="spinner-border text-light" role="status">
+      <span class="sr-only">Loading...</span>
+      </div>`;
+        $.ajax({
+          url: '/generate-range',
+          type: 'POST',
+          data: formData,
+          processData: false,
+          contentType: false,
+
+          beforeSend: function () {
+            $('#ntn1').html(spin);
+          },
+
+          complete: function (arg) {
+            a = arg.responseJSON.a;
+            ln = arg.responseJSON.ln;
+            console.log(arg.responseJSON.a);
+            $('#ntn1').text('Generated');
+            $('#ntn1').attr('disabled');
+
+            var v =
+              '<button id="tog" type="button" class="btn btn-primary btn1 bt3" data-toggle="modal" data-target=".bd-example-modal-lg">Click here to see Non Existent Roll No</button>';
+
+            v +=
+              '<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">';
+            v +=
+              '<div style="    background-color: darkgray;border-radius: 5px;padding: 2px;" class="modal-dialog modal-lg">';
+            v += '<div style="margin:5px; display:contents" class="modal-content" >';
+            var v1 = '';
+
+            for (var i = 0; i < ln; i++) {
+              console.log(a[i]);
+              v1 +=
+                '<button type="button" class="btn btn-danger btn-sm bt2">' + a[i] + '</button>';
+            }
+            v += v1;
+            v += '</div>';
+            v += '</div>';
+            v += '</div>';
+
+            var ulelement = document.getElementById('temp');
+
+            ulelement.insertAdjacentHTML('afterend', v);
+
+          },
+        });
+      });
+
+
+      $('#gn').click(function (e) {
+        e.preventDefault();
+
+        var spin = `<div class="spinner-border text-light" role="status">
+      <span class="sr-only">Loading...</span>
+      </div>`;
+        $.ajax({
+          url: '/generate',
+          type: 'POST',
+          processData: false,
+          contentType: false,
+
+          beforeSend: function () {
+            $('#gn').html(spin);
+          },
+
+          complete: function (arg) {
+            $('#gn').text('Generated');
+          },
+        });
+      });
+    });
+
+    $('#password, #useremail').change(function () {
+      if ($('#password').val() != "" && $('#useremail').val() != "")
+        $('#ntn1').prop('disabled', false);
+    });
+  </script>
+</body>
+
+</html>
